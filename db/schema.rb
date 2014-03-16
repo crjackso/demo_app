@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140316075552) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "participants", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -22,6 +25,6 @@ ActiveRecord::Schema.define(version: 20140316075552) do
     t.datetime "updated_at"
   end
 
-  add_index "participants", ["email"], name: "index_participants_on_email", unique: true
+  add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
 
 end
