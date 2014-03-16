@@ -1,3 +1,25 @@
-<h1>New participant</h1>
 
-<%= render 'form' %>
+<div class="panel panel-primary">
+  <div class="panel-heading">THE GLOBAL CALL TO CLIMATE CHANGE</div>
+  <div class="panel-body">
+    <p>The climate is becoming dangerously imbalanced due to human interference, and the choices
+      we make in the next few years will determine our future.</p>
+    <p><strong>Now is our moment,</strong> before climate change becomes irreversible, to stand up
+      for the safety and wellbeing of people - at home and around the world.</p>
+    <%= bootstrap_form_for(@participant) do |f| %>
+        <%= f.alert_message "Please fix the errors below." %>
+        <%= f.text_field :first_name, hide_label: true, placeholder: 'First Name' do %>
+            <span class="glyphicon glyphicon-expand"></span>
+        <%end%>
+        <%= f.text_field :last_name, hide_label: true, placeholder: 'Last Name' %>
+        <%= f.email_field :email, hint: 'yes!', hide_label: true, placeholder: 'Email' %>
+        <div class="form-group">
+            <%= f.country_select :country_code, ["United States"], class: 'form-control dropdown' %>
+        </div>
+        <%= f.submit "SIGN THE DECLARATION", class: 'btn btn-primary btn-lg' do %>
+            <span class="glyphicon glyphicon-star"></span> Star
+        <% end %>
+    <% end %>
+    <span class="muted">Do you represent a school, business, or organization? Click here</span>
+  </div>
+</div>

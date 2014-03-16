@@ -15,5 +15,10 @@
   <%= @participant.email %>
 </p>
 
+<p>
+  <strong>Country:</strong>
+  <%= @participant.country_code %>
+</p>
+
 <%= link_to 'Edit', edit_participant_path(@participant) %> |
 <%= link_to 'Back', participants_path %>

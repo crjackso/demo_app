@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe Participant do
   EXCEEDING_LENGTH = 51
-  before { @participant = Participant.new(first_name: "Johnny", last_name: 'Smith', email: 'user@example.com') }
+  before { @participant = Participant.new(first_name: "Johnny", last_name: 'Smith', country_code: 'United States', email: 'user@example.com') }
 
   subject { @participant }
 
   it { should respond_to(:first_name) }
   it { should respond_to(:last_name) }
   it { should respond_to(:email) }
+  it { should respond_to(:country_code) }
 
   it { should be_valid }
 

@@ -4,6 +4,7 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :first_name
       t.string :last_name
       t.string :email
+      t.string :country_code
 
       t.timestamps
     end
