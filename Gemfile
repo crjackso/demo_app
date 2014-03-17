@@ -16,6 +16,7 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '2.0.4'
 gem 'bootstrap_form', '2.0.1'
 gem 'country_select'
+gem 'email_validator', '1.4.0', :require => 'email_validator/strict'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
