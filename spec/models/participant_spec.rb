@@ -23,6 +23,11 @@ describe Participant do
     it { should_not be_valid }
   end
 
+  describe 'when country code is not present' do
+    before { @participant.country_code = ' ' }
+    it { should_not be_valid }
+  end
+
   describe 'when first name is too long' do
     before { @participant.first_name = 'a' * EXCEEDING_LENGTH }
     it { should_not be_valid }
