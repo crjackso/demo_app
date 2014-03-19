@@ -9,12 +9,12 @@ group :development, :test do
 end
 
 gem 'sass-rails', '4.0.2'
-gem 'bootstrap-sass', '3.1.1'
+#gem 'bootstrap-sass', '3.1.1'
 gem 'uglifier', '2.1.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '2.0.4'
-gem 'bootstrap_form', '2.0.1'
+#gem 'bootstrap_forms', '4.0.1'
 gem 'country_select'
 gem 'email_validator', '1.4.0', :require => 'email_validator/strict'
 

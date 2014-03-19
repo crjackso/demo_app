@@ -1,6 +1,10 @@
 class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show]
 
+  def index
+    @participants = Participant.all
+  end
+
   # GET /participants/1
   # GET /participants/1.json
   def show

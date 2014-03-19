@@ -1,3 +1,122 @@
 // Place all the styles related to the Participants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: "museo-sans",sans-serif;
+  font-size: 15px;
+}
+ul li {list-style: none;}
+input[type='text'],
+input[type='email'] {
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #c1c1c1;
+  padding: 7px 10px;
+  font-size: 20px;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin: 0px;
+  text-transform: none;
+  font-weight: 100;
+}
+
+#new_participant {
+  clear: both;
+  margin: auto;
+  text-align: left;
+  background: #ededed;
+  margin-left: -22px;
+  width: 424px;
+  padding: 10px 20px;
+
+  ul{
+    margin: 0;
+    padding: 0;
+  }
+  ul li {
+    display: block;
+    list-style: none;
+    padding: 0px;
+    margin: 0px 0px 10px;
+  }
+  #lname-container{
+    float: right;
+    margin-top: -49px;
+  }
+  #country-container{
+    height: 42px;
+    &:after {
+      content: close-quote;
+      display: block;
+      position: relative;
+      right: -390px;
+      top: -25px;
+      width: 0;
+      height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      border-top: 11px solid #a3a3a3;
+      margin: 0px
+    }
+  }
+
+  button[type="submit"] {
+    width: 424px;
+    color: white;
+    background: #e3023e image_url('whitearrow.png') no-repeat;
+    background-position: 94% 50%;
+    outline: none;
+    border: none;
+    font-family: 'Source Sans Pro', sans-serif;
+    text-shadow: 1px 1px 2px rgba(148, 11, 48, .85);
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 400 !important;
+    line-height: 100%;
+    padding: 8px 69px 8px 49px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 10px 0 0;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+  }
+}
+
+#participant_first_name {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  background: image_url('name-icon.png') 10px center no-repeat #fff;
+  padding-left: 50px;
+  width: 153px;
+}
+
+#participant_last_name {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  width: 188px;
+}
+
+#participant_email {
+  width:362px !important;
+  padding: 7px 10px;
+  padding-left:50px;
+  background:image_url('email-icon.png') 10px center no-repeat #fff;
+}
+
+#participant_country_code {
+    -webkit-appearance:none;
+    border-radius:5px;
+    outline:none;
+    border:1px solid #c1c1c1;
+    padding:7px 10px;
+    font-size:20px;
+    font-family:'Source Sans Pro', sans-serif;
+    font-weight:100;
+    width:424px;
+    color:#3b3b3b;
+    background: image_url('globe-icon.png') 10px center no-repeat #fff;
+    padding-left:50px;
+    position:relative;
+    text-transform:capitalize;
+    height: 42px;
+}
