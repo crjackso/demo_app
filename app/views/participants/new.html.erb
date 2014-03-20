@@ -25,6 +25,9 @@
         <%= f.country_select :country_code, ["United States"], class: 'form-control dropdown' %>
       </li>
     </ul>
+    <%= fields_for :microsite do |builder| %>
+        <%= builder.hidden_field :name %>
+    <% end %>
     <div class="actions">
       <%= button_tag(type: 'submit', id: 'signup_prompt', class: "btn btn-primary btn-lg") do %>
           SIGN THE DECLARATION <span class="glyphicon glyphicon-expand"></span>

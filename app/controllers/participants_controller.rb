@@ -18,10 +18,16 @@ class ParticipantsController < ApplicationController
   # POST /participants
   # POST /participants.json
   def create
-    @participant = Participant.new(participant_params)
+    saved = false
+    Participant.transaction do
+      microsite = save_microsite(microsite_params)
+      @participant = Participant.new(participant_params)
+      @participant.microsite = microsite
+      saved = @participant.save
+    end
 
     respond_to do |format|
-      if @participant.save
+      if saved
         format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
         format.json { render action: 'show', status: :created, location: @participant }
       else
@@ -37,8 +43,16 @@ class ParticipantsController < ApplicationController
       @participant = Participant.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def participant_params
       params.require(:participant).permit(:first_name, :last_name, :email, :country_code)
+    end
+
+    def save_microsite(microsite_params)
+      name = microsite_params['name']
+      Microsite.find_or_create_by(name: name)
+    end
+
+    def microsite_params
+      params.require(:microsite).permit(:name)
     end
 end

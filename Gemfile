@@ -6,6 +6,7 @@ gem 'rails', '4.0.3'
 group :development, :test do
   gem 'rspec-rails', '2.9.0'
   gem 'database_cleaner', '1.2.0'
+  gem 'factory_girl_rails', '4.4.1'
 end
 
 gem 'sass-rails', '4.0.2'

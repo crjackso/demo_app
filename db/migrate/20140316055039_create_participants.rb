@@ -5,6 +5,7 @@ class CreateParticipants < ActiveRecord::Migration
       t.string :last_name
       t.string :email
       t.string :country_code
+      t.integer :microsite_id
 
       t.timestamps
     end

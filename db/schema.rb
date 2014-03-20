@@ -11,16 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316075552) do
+ActiveRecord::Schema.define(version: 20140319235806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "microsites", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "microsites", ["name"], name: "index_microsites_on_name", unique: true, using: :btree
 
   create_table "participants", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "country_code"
+    t.integer  "microsite_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

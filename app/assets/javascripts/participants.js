@@ -3,6 +3,7 @@ cf.participantMgr = function() {
     var self = this;
     var signup_form = $('#new_participant');
     var submit_button = $('#signup_prompt');
+    var microsite = $('#microsite_name');
 
     function getJsonFromUrl() {
         var query = location.search.substr(1);
@@ -24,7 +25,7 @@ cf.participantMgr = function() {
         submit_button.click(function(event){
             event.preventDefault();
             var influencer = getInfluencer();
-            var microsite = window.location.hostname;
+            microsite.val( window.location.hostname);
             console.log(influencer);
             console.log(microsite);
 
