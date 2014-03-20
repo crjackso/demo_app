@@ -1,9 +1,9 @@
 module UrlHelper
   def generate_unique_url(microsite, influencer_id)
-    return microsite if influencer_id.nil?
+    return {url: microsite} if influencer_id.nil?
 
-    hashids = Hashids.new("this is my salt")
+    hashids = Hashids.new(ENV['HASH_SALT'])
     hash = hashids.encrypt(influencer_id)
-    return "#{microsite}/?influencer=#{hash}"
+    return {url: "#{microsite}/?influencer=#{hash}", hash: hash}
   end
 end

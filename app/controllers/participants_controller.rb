@@ -21,16 +21,18 @@ class ParticipantsController < ApplicationController
   def create
     saved = false
     Participant.transaction do
-      microsite = save_microsite(microsite_params)
+      @microsite = save_microsite(microsite_params)
       @participant = Participant.new(participant_params)
-      @participant.microsite = microsite
+      @participant.microsite = @microsite
       saved = @participant.save
     end
 
     respond_to do |format|
       if saved
+        unique_response = generate_unique_url(@microsite, @participant.id)
+
         format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
-        format.json { render json: {success: true, participant_id: @participant.id}, status: :created }
+        format.json { render json: {success: true, participant_id: unique_response[:hash], unique_url: unique_response[:url]}, status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @participant.errors, status: :unprocessable_entity }

@@ -8,6 +8,7 @@ group :development, :test do
   gem 'database_cleaner', '1.2.0'
   gem 'factory_girl_rails', '4.4.1'
   gem 'pry-rails'
+  gem 'figaro'
 end
 
 gem 'sass-rails', '4.0.2'

@@ -26,7 +26,8 @@ describe ParticipantsController do
       parsed_response_body = JSON.parse(response.body)
 
       parsed_response_body['success'].should == true
-      parsed_response_body['participant_id'].should == 1
+      parsed_response_body['participant_id'].should_not eql 1
+      parsed_response_body['unique_url'].should_not be_nil
     end
 
   end
