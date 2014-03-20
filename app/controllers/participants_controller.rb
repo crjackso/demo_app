@@ -1,4 +1,5 @@
 class ParticipantsController < ApplicationController
+  include UrlHelper
   before_action :set_participant, only: [:show]
 
   def index

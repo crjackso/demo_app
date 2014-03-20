@@ -16,6 +16,7 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '2.0.4'
 gem 'country_select'
 gem 'email_validator', '1.4.0', :require => 'email_validator/strict'
+gem 'hashids', '0.3.0'
 
 group :doc do
   gem 'sdoc', '0.3.20', require: false
