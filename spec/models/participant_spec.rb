@@ -2,7 +2,6 @@ require 'spec_helper'
 
 describe Participant do
   EXCEEDING_LENGTH = 51
-  #before { @participant = Participant.new(first_name: "Johnny", last_name: 'Smith', country_code: 'United States', email: 'user@example.com') }
 
   let(:participant) { FactoryGirl.create(:participant) }
   subject { participant }
@@ -40,9 +39,10 @@ describe Participant do
   end
 
   describe 'when email format is invalid' do
-    it "should be invalid" do
+    it 'should be invalid' do
       addresses = %w[user@foo,com user_at_foo.org example.user@foo.
                      foo@bar_baz.com foo@bar+baz.com]
+      participant = FactoryGirl.build(:participant, :with_microsite)
       addresses.each do |invalid_address|
         participant.email = invalid_address
         participant.should_not be_valid
@@ -51,8 +51,9 @@ describe Participant do
   end
 
   describe 'when email format is valid' do
-    it "should be valid" do
+    it 'should be valid' do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      participant = FactoryGirl.build(:participant, :with_microsite)
       addresses.each do |valid_address|
         participant.email = valid_address
         participant.should be_valid
@@ -61,24 +62,22 @@ describe Participant do
   end
 
   describe 'when same email address is signed up for multiple microsites' do
-    before do
-      microsite = Microsite.create(name: 'different.org')
-      same_email_different_microsite = participant.dup
-      same_email_different_microsite.microsite = microsite
-      same_email_different_microsite.save
+    it 'should be valid' do
+      microsite = FactoryGirl.create(:microsite, name:'nowisourmoment.org')
+      different_microsite = FactoryGirl.create(:microsite, name: 'different.org')
+      participant = FactoryGirl.create(:participant, email: 'same@mail.com', microsite: microsite)
+      participant_for_different_microsite = FactoryGirl.create(:participant, email: 'same@mail.com', microsite: different_microsite)
+      participant_for_different_microsite.should be_valid
     end
-
-    it { should be_valid }
   end
 
   describe 'when email address is already signed up for a microsite' do
-    before do
-      participant.save
-      participant_with_same_email = participant.dup
-      participant_with_same_email.email = participant.email.upcase
-      participant_with_same_email.save
-    end
+    it 'should not be valid' do
+      microsite = FactoryGirl.create(:microsite, name: 'nowisourmoment.org')
+      participant = FactoryGirl.create(:participant, email: 'someone@mail.com', microsite: microsite)
 
-    it { should_not be_valid }
+      participant_with_same_email_and_microsite = Participant.create(email: 'someone@mail.com', microsite: microsite)
+      participant_with_same_email_and_microsite.should_not be_valid
+    end
   end
 end

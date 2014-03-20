@@ -4,7 +4,10 @@ FactoryGirl.define do
     last_name     "Doe"
     email         "jdoe@test.net"
     country_code  "United States"
-    microsite
-    #association :microsite, factory: :microsite #, name: "Writely"
+    association :microsite, strategy: :build
+
+    trait :with_microsite do
+      microsite
+    end
   end
 end

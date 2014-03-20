@@ -34,6 +34,6 @@ ActiveRecord::Schema.define(version: 20140319235806) do
     t.datetime "updated_at"
   end
 
-  add_index "participants", ["email"], name: "index_participants_on_email", unique: true, using: :btree
+  add_index "participants", ["email", "microsite_id"], name: "index_participants_on_email_and_microsite_id", unique: true, using: :btree
 
 end
