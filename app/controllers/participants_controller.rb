@@ -30,7 +30,7 @@ class ParticipantsController < ApplicationController
     respond_to do |format|
       if saved
         format.html { redirect_to @participant, notice: 'Participant was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @participant }
+        format.json { render json: {success: true, participant_id: @participant.id}, status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @participant.errors, status: :unprocessable_entity }
